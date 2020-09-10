@@ -1,10 +1,7 @@
-#!/bin/bash
 alline=$(wc -l access-4560-644067.log | cut -d ' ' -f 1)
 numline=$(grep -n $(cat time) access-4560-644067.log | awk -F: '{print $1}' | head -n 1)
-echo $alline
-echo $numline
 line=$(($alline - $numline))
-echo $line
+tail -n $line access-4560-644067.log
 # awk '{print $1,$4,$6,$9}' access-4560-644067.log > access.log
 # awk 'END{print $2}' access.log | cut -c 2- > time
 # cat time
