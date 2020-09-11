@@ -20,3 +20,6 @@ awk '! /(GET|POST)/{print $1}' access.log > ip-error.log
 
 # Фильтруем и сохраняем список всех кодов возврата с указанием их количества
 awk '/(GET|POST)/{print $4}' access.log | sort -n | uniq -c | sort -n -r > code.log
+
+# Отправляем файлы отчеты по почте
+# echo "logs server" | mutt -s "logs server" -a get-post-ip.log -- post-ip.log -- ip-error.log -- code.log -- user@email.com
